@@ -1,0 +1,9 @@
+[Unit]
+Description=Daemon required to control GPIO pins via bcm2835.
+
+[Service]
+ExecStart=/usr/bin/pyxis-gpio
+User=root
+
+[Install]
+WantedBy=multi-user.target
