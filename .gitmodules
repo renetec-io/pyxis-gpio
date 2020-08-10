@@ -1,0 +1,3 @@
+[submodule "bcm2835"]
+	path = bcm2835
+	url = https://github.com/renetec-io/bcm2835.git

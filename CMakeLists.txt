@@ -6,17 +6,18 @@ project(pyxis-gpio)
 
 set(SOURCES src/pyxis_gpio.c
             src/rpi_gpio_backend.c
-            ${BCM2835_SOURCE}/src/bcm2835.c)
+            bcm2835/src/bcm2835.c)
 
 add_executable(${CMAKE_PROJECT_NAME} ${SOURCES})
 
 set_property(TARGET ${CMAKE_PROJECT_NAME} PROPERTY C_STANDARD 11)
 
 target_include_directories(${CMAKE_PROJECT_NAME} PRIVATE ${BCM2835_SOURCE}/src)
+target_include_directories(${CMAKE_PROJECT_NAME} PRIVATE ${PROJECT_SOURCE_DIR}/inc)
 
 install(TARGETS ${CMAKE_PROJECT_NAME} RUNTIME DESTINATION /usr/bin)
 install(FILES pyxis-gpio.service DESTINATION /lib/systemd/system)
-install(FILES src/pyxis_gpio_comm.h DESTINATION /usr/include)
+install(FILES inc/pyxis_gpio_comm.h DESTINATION /usr/include)
 
 if(NOT CMAKE_BUILD_TYPE)
   set(CMAKE_BUILD_TYPE Release)
